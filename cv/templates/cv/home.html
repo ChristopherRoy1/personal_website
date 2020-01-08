@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title> Christopher Roy </title>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+  <h1>Christopher Roy </h1>
+  <h3>Mechanical Engineering, Computer Science Minor </h3>
+</div>
+
+
+
+
+<div class="container">
+  <h2>Work Experience</h2>
+
+  {% for workitem in work_experience_items %}
+  <ul class="list-unstyled">
+  <li class="media border p-6">
+    <img src="..." class="mr-3" alt="..." style="width:60px">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">{{ workitem.work_item_position_title }} <br></br><small><i>{{ workitem.work_item_start_date }} - {{ workitem.work_item_end_date }}</small></i></h5>
+      Dept: {{ workitem.work_item_department}}
+    </div>
+  </li>
+</ul>
+  {% endfor %}
+</div>
+{% endblock %}
