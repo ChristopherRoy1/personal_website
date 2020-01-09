@@ -35,6 +35,12 @@ class WorkItem(models.Model):
     def get_bullets(self):
         return WorkItemBullet.objects.filter(work_item=self).order_by('work_item_ordering')
 
+    def get_end_date(self):
+        if not self.work_item_end_date:
+            return "Present"
+        else:
+            return str(self.work_item_end_date)
+
     def __str__(self):
         tostr = "[" + self.work_item_company + "][" + \
                       self.work_item_position_title + "][" + \

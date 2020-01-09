@@ -6,41 +6,42 @@
 
 {% block body %}
 <div class="jumbotron">
-  <h1>Christopher Roy </h1>
-  <h3>Mechanical Engineering, Computer Science Minor </h3>
+  <h1 style="color: #fff">Christopher Roy, B.Eng </h1>
+  <h3 style="color: #fff">Mechanical Engineering - Business Intelligence - Computer Science </h3>
 </div>
 
-<div class="p-5 shadow container" id="experience">
-  <h2>Work Experience</h2>
-
-  <ul class="list">
-  {% for witem in work_experience_items %}
-  <div class="media border m-8">
-    <img src="..." class="mr-3" alt="..." style="width:60px">
-      <div class="row">
-        <b>{{ witem.work_item_position_title }}</b><br></br>
-    </div>
-      <div class="row">
-          <i>{{ witem.work_item_department}}</i>
-      <div class="col">
-        <small>{{ witem.work_item_start_date }} - {{ witem.work_item_end_date }}</small>
-      </div>
-    </div>
-    <div class="media-body">
-      <ul class="list-group">
-      {% for bullet in witem.get_bullets %}
-        <li class="list-group-item p-4">
-          {{ bullet.work_item_bullet }}
-        </li>
-      {% endfor %}
-      </ul>
-    </div>
+<div class="container">
+  <div class="col">
+    <span style="font-size: 48px">
+      <i class="fab fa-linkedin-in"></i>
+    </span>
   </div>
-  {% endfor %}
-</ul>
-
-
 </div>
+
+
+<div class="container shadow p-5">
+  <h2> Work Experience </h2>
+  <div class="col-lg10- col-xl-8">
+    <ul class="list-unstyled">
+      {% for witem in work_experience_items %}
+      <li class="media m-3 mx-auto">
+        <img class="mr-3" src="" alt="Image">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1"> <b>{{ witem.work_item_position_title }}</b> - <small>{{ witem.work_item_start_date }} - {{ witem.get_end_date }}</small>   </h5>
+            <h6 class="mt-0 mb-1"> <b>{{witem.work_item_company}}- <i>{{ witem.work_item_department}}</i></b></h6>
+            {% for bullet in witem.get_bullets %}
+            <p>{{ bullet.work_item_bullet }}<p>
+            {% endfor %}
+          </div>
+      </li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+
+
 
 <div class="p-5 shadow container" id="education">
   <h2>Education</h2>
