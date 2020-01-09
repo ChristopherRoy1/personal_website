@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block head %}
 <title> Christopher Roy </title>
 {% endblock %}
@@ -10,69 +10,40 @@
   <h3 style="color: #fff">Mechanical Engineering - Business Intelligence - Computer Science </h3>
 </div>
 
-<div class="container">
-  <div class="col">
-
-  </div>
-</div>
 
 
-<div class="container shadow p-5">
-  <h2> Work Experience </h2>
-  <div class="col-lg10- col-xl-8">
-    <ul class="list-unstyled">
-      {% for witem in work_experience_items %}
-      <li class="media m-3 mx-auto">
-        <img class="mr-3" src="" alt="Image">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1"> <b>{{ witem.work_item_position_title }}</b> - <small>{{ witem.work_item_start_date }} - {{ witem.get_end_date }}</small>   </h5>
-            <h6 class="mt-0 mb-1"> <b>{{witem.work_item_company}}- <i>{{ witem.work_item_department}}</i></b></h6>
-            {% for bullet in witem.get_bullets %}
-            <p>{{ bullet.work_item_bullet }}<p>
-            {% endfor %}
-          </div>
-      </li>
-        {% endfor %}
-    </ul>
-  </div>
-</div>
+  <div class="container">
+            <div class="col-lg-6 mx-auto" id="experience">
+                <h2 class="text-center"> Work Experience </h2>
+                <!-- Timeline -->
+                <ul class="timeline">
+                  {% for witem in work_experience_items %}
+                    <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                        <div class="timeline-arrow"></div>
+                        <h2 class="h5 mb-0"><b>{{ witem.work_item_position_title }}</b> - {{ witem.work_item_department}} </h2><h5 class="h5 grey"><small><i>{{witem.work_item_company}}</i></small></h5><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i><small>{{ witem.work_item_start_date }} - {{ witem.get_end_date }}</small></span>
 
+                        {% for bullet in witem.get_bullets %}
+                        <p class="text-small mt-2 font-weight-light">{{ bullet.work_item_bullet }}</p>
+                        {% endfor %}
+                    </li>
+                    {% endfor %}
+                </ul><!-- End -->
 
+            </div>
+            <div class="col-lg-6" id="education">
+                        <h2 class="text-center"> Education </h2>
+                        <!-- Timeline -->
+                        <ul class="timeline">
+                          {% for eitem in education_items %}
 
+                            <li class="timeline-item bg-white rounded ml-3 p-4 shadow">
+                                <div class="timeline-arrow"></div>
+                                <h2 class="h5 mb-0"><b>{{ eitem.education_item_title }}</b></h2><h5 class="h5 grey"><small><i>{{eitem.education_item_level}}</i> - {{eitem.education_item_institution}}</small></h5><span class="small text-gray"><i class="fa fa-clock-o mr-1"></i><small>{{ eitem.education_item_start_date }} - {{ eitem.education_item_end_date }}</small></span>
+                            </li>
+                            {% endfor %}
+                        </ul><!-- End -->
 
-
-<div class="p-5 shadow container" id="education">
-  <h2>Education</h2>
-
-  {% for workitem in work_experience_items %}
-  <ul class="shadow list-unstyled">
-  <li class="media border p-6">
-    <img src="..." class="mr-3" alt="..." style="width:60px">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">{{ workitem.work_item_position_title }} <br></br><small><i>{{ workitem.work_item_start_date }} - {{ workitem.work_item_end_date }}</small></i></h5>
-      Dept: {{ workitem.work_item_department}}
-    </div>
-  </li>
-</ul>
-  {% endfor %}
-</div>
-
-
-<div class="p-5 shadow container" id="hobbies">
-  <h2>Hobbies</h2>
-
-  {% for workitem in work_experience_items %}
-  <ul class="shadow list-unstyled">
-  <li class="media border p-6">
-    <img src="..." class="mr-3" alt="..." style="width:60px">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">{{ workitem.work_item_position_title }} <br></br><small><i>{{ workitem.work_item_start_date }} - {{ workitem.work_item_end_date }}</small></i></h5>
-      Dept: {{ workitem.work_item_department}}
-    </div>
-  </li>
-</ul>
-  {% endfor %}
-</div>
-
+                    </div>
+            </div>
 
 {% endblock %}
