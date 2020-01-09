@@ -10,14 +10,43 @@
   <h3>Mechanical Engineering, Computer Science Minor </h3>
 </div>
 
-
-
-
-<div class="container">
+<div class="p-5 shadow container" id="experience">
   <h2>Work Experience</h2>
 
+  <ul class="list">
+  {% for witem in work_experience_items %}
+  <div class="media border m-8">
+    <img src="..." class="mr-3" alt="..." style="width:60px">
+      <div class="row">
+        <b>{{ witem.work_item_position_title }}</b><br></br>
+    </div>
+      <div class="row">
+          <i>{{ witem.work_item_department}}</i>
+      <div class="col">
+        <small>{{ witem.work_item_start_date }} - {{ witem.work_item_end_date }}</small>
+      </div>
+    </div>
+    <div class="media-body">
+      <ul class="list-group">
+      {% for bullet in witem.get_bullets %}
+        <li class="list-group-item p-4">
+          {{ bullet.work_item_bullet }}
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</ul>
+
+
+</div>
+
+<div class="p-5 shadow container" id="education">
+  <h2>Education</h2>
+
   {% for workitem in work_experience_items %}
-  <ul class="list-unstyled">
+  <ul class="shadow list-unstyled">
   <li class="media border p-6">
     <img src="..." class="mr-3" alt="..." style="width:60px">
     <div class="media-body">
@@ -28,4 +57,23 @@
 </ul>
   {% endfor %}
 </div>
+
+
+<div class="p-5 shadow container" id="hobbies">
+  <h2>Hobbies</h2>
+
+  {% for workitem in work_experience_items %}
+  <ul class="shadow list-unstyled">
+  <li class="media border p-6">
+    <img src="..." class="mr-3" alt="..." style="width:60px">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">{{ workitem.work_item_position_title }} <br></br><small><i>{{ workitem.work_item_start_date }} - {{ workitem.work_item_end_date }}</small></i></h5>
+      Dept: {{ workitem.work_item_department}}
+    </div>
+  </li>
+</ul>
+  {% endfor %}
+</div>
+
+
 {% endblock %}
