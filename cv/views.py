@@ -14,4 +14,4 @@ def home(request):
             'work_experience_items': work_items, \
             'education_items': education_items}
 
-    return render(request, 'cv/home.html', args)
+    return render(request, 'cv/index.html', args)
